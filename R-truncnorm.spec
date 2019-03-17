@@ -4,17 +4,20 @@
 #
 Name     : R-truncnorm
 Version  : 1.0.8
-Release  : 13
+Release  : 14
 URL      : https://cran.r-project.org/src/contrib/truncnorm_1.0-8.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/truncnorm_1.0-8.tar.gz
 Summary  : Truncated Normal Distribution
 Group    : Development/Tools
 License  : GPL-2.0+
-Requires: R-truncnorm-lib
-BuildRequires : clr-R-helpers
+Requires: R-truncnorm-lib = %{version}-%{release}
+Requires: R-assertthat
+BuildRequires : R-assertthat
+BuildRequires : buildreq-R
 
 %description
-generation functions for the truncated normal distribution.
+# truncnorm
+R package implementing density, probability, quantile and random number generation functions for the truncated normal distribution.
 
 %package lib
 Summary: lib components for the R-truncnorm package.
@@ -32,11 +35,11 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1521226639
+export SOURCE_DATE_EPOCH=1552802729
 
 %install
+export SOURCE_DATE_EPOCH=1552802729
 rm -rf %{buildroot}
-export SOURCE_DATE_EPOCH=1521226639
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -71,8 +74,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/library truncnorm|| : 
-cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
+R CMD check --no-manual --no-examples --no-codoc  truncnorm || :
 
 
 %files
@@ -96,7 +98,11 @@ cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 /usr/lib64/R/library/truncnorm/help/truncnorm.rdx
 /usr/lib64/R/library/truncnorm/html/00Index.html
 /usr/lib64/R/library/truncnorm/html/R.css
-/usr/lib64/R/library/truncnorm/libs/symbols.rds
+/usr/lib64/R/library/truncnorm/tests/testthat.R
+/usr/lib64/R/library/truncnorm/tests/testthat/test-reg-arg_checks.R
+/usr/lib64/R/library/truncnorm/tests/testthat/test-reg-recylce.R
+/usr/lib64/R/library/truncnorm/tests/testthat/test-reg-segfault.R
+/usr/lib64/R/library/truncnorm/tests/testthat/test-sanity_checks.R
 
 %files lib
 %defattr(-,root,root,-)
