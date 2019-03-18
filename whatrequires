@@ -1,4 +1,5 @@
 # This file contains recursive sources that require this package
 R-Rsolnp
 R-mi
+R-robCompositions
 R-zCompositions
