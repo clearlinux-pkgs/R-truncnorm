@@ -4,7 +4,7 @@
 #
 Name     : R-truncnorm
 Version  : 1.0.8
-Release  : 30
+Release  : 31
 URL      : https://cran.r-project.org/src/contrib/truncnorm_1.0-8.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/truncnorm_1.0-8.tar.gz
 Summary  : Truncated Normal Distribution
